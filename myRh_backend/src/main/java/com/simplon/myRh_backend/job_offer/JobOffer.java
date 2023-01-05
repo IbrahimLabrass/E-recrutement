@@ -1,5 +1,6 @@
 package com.simplon.myRh_backend.job_offer;
 
+import com.simplon.myRh_backend.company.Company;
 import jakarta.persistence.*;
 
 @Entity
@@ -24,7 +25,18 @@ public class JobOffer{
 
     private String educationLevel;
 
-    private String experienceLevel;
+    private int experienceLevel;
+
+    @ManyToOne
+    private Company company;
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
 
     public Long getId() {
         return id;
@@ -90,18 +102,18 @@ public class JobOffer{
         this.educationLevel = educationLevel;
     }
 
-    public String getExperienceLevel() {
+    public int getExperienceLevel() {
         return experienceLevel;
     }
 
-    public void setExperienceLevel(String experienceLevel) {
+    public void setExperienceLevel(int experienceLevel) {
         this.experienceLevel = experienceLevel;
     }
 
     public JobOffer(){
 
     }
-    public JobOffer(String title, String description, String location, String contractType, String salary, String profile, String educationLevel, String experienceLevel) {
+    public JobOffer(String title, String description, String location, String contractType, String salary, String profile, String educationLevel, int experienceLevel) {
         this.title = title;
         this.description = description;
         this.location = location;
@@ -111,4 +123,5 @@ public class JobOffer{
         this.educationLevel = educationLevel;
         this.experienceLevel = experienceLevel;
     }
+
 }

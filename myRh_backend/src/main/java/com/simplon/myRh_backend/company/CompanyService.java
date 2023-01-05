@@ -3,6 +3,8 @@ package com.simplon.myRh_backend.company;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CompanyService {
 
@@ -21,4 +23,19 @@ public class CompanyService {
         return companyRepository.findByEmail(email);
     }
 
+    public List<Company> findAll(){
+        return companyRepository.findAll();
+    }
+
+    public Company updateCompany(Company company){
+        return companyRepository.save(company);
+    }
+
+    public void deleteCompany(Long id){
+        companyRepository.deleteById(id);
+    }
+
+    public Company findByName(String name) {
+        return companyRepository.findByName(name);
+    }
 }

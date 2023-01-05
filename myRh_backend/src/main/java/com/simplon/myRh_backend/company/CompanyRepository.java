@@ -8,4 +8,5 @@ public interface CompanyRepository extends JpaRepository<Company, Long> {
 
     public Company findByEmail(String email);
 
+    Company findByName(String name);
 }

@@ -1,6 +1,9 @@
 package com.simplon.myRh_backend.company;
 
+import com.simplon.myRh_backend.recruiter.Recruiter;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class Company {
@@ -14,13 +17,17 @@ public class Company {
 
     private String address;
 
+    @Column(unique = true)
     private String email;
 
     private String password;
 
     private String phone;
 
-    private byte[] logo;
+    private String logo;
+
+    @OneToMany(mappedBy = "company")
+    private List<Recruiter> recruiters;
 
     public Long getId() {
         return id;
@@ -70,11 +77,11 @@ public class Company {
         this.phone = phone;
     }
 
-    public byte[] getLogo() {
+    public String  getLogo() {
         return logo;
     }
 
-    public void setLogo(byte[] logo) {
+    public void setLogo(String logo) {
         this.logo = logo;
     }
 
@@ -84,7 +91,7 @@ public class Company {
 
     }
 
-    public Company(String name, String address, String email, String password, String phone, byte[] logo) {
+    public Company(String name, String address, String email, String password, String phone, String logo) {
         this.name = name;
         this.address = address;
         this.email = email;

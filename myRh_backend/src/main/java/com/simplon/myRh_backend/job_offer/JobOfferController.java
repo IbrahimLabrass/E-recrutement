@@ -1,23 +1,53 @@
 package com.simplon.myRh_backend.job_offer;
 
+import com.simplon.myRh_backend.company.Company;
+import com.simplon.myRh_backend.company.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
-@RequestMapping("/api/job_offer")
+@RequestMapping("/api/job_offers")
 public class JobOfferController {
 
     private final JobOfferService jobOfferService;
+    private final CompanyService companyService;
 
     @Autowired
-    public JobOfferController(JobOfferService jobOfferService) {
+    public JobOfferController(JobOfferService jobOfferService, CompanyService companyService) {
         this.jobOfferService = jobOfferService;
+        this.companyService = companyService;
     }
 
-    @RequestMapping("/save")
-    public JobOffer save(JobOffer jobOffer){
+    @PostMapping("/save")
+    public JobOffer save(@RequestBody JobOffer jobOffer,@RequestParam String companyName){
+        Company company = companyService.findByName(companyName);
+        jobOffer.setCompany(company);
         return jobOfferService.save(jobOffer);
     }
+
+    @GetMapping("/find")
+    public JobOffer findById(@RequestParam Long id){
+        return jobOfferService.findById(id);
+    }
+
+    @GetMapping()
+    public ResponseEntity<List<JobOffer>> getAllJobOffers(){
+        return ResponseEntity.ok().body(jobOfferService.findAll());
+    }
+
+    @GetMapping("/find/title")
+    public ResponseEntity<JobOffer> findJobOfferByTitle(@RequestParam String title){
+        return ResponseEntity.ok(jobOfferService.findJobOfferByTitle(title));
+    }
+
+    @GetMapping("/find/company")
+    public ResponseEntity<List<JobOffer>> findJobOfferByCompany(@RequestParam String company){
+        Company company1 = companyService.findByName(company);
+        return ResponseEntity.ok(jobOfferService.findJobOfferByCompany(company1));
+    }
+
+
 }
