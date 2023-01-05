@@ -29,7 +29,7 @@ public class JobOfferService {
         return jobOfferRepository.findAll();
     }
 
-    public JobOffer findJobOfferByTitle(String title){
+    public List<JobOffer> findJobOfferByTitle(String title){
 
         return jobOfferRepository.findJobOfferByTitleLike(title).orElseThrow(() -> new JobOfferNotFoundException("Job offer with title " + title + " does not exists"));
     }

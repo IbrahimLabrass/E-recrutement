@@ -1,12 +1,17 @@
 package com.simplon.myRh_backend.company;
 
 import com.simplon.myRh_backend.recruiter.Recruiter;
+import com.simplon.myRh_backend.utils.Role;
 import jakarta.persistence.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.Collection;
 import java.util.List;
 
 @Entity
-public class Company {
+public class Company implements UserDetails {
 
     @Id
     @GeneratedValue(generator = "company_id_seq")
@@ -25,6 +30,9 @@ public class Company {
     private String phone;
 
     private String logo;
+
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
     @OneToMany(mappedBy = "company")
     private List<Recruiter> recruiters;
@@ -61,8 +69,38 @@ public class Company {
         this.email = email;
     }
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority(role.name()));
+    }
+
     public String getPassword() {
         return password;
+    }
+
+    @Override
+    public String getUsername() {
+        return email;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return false;
     }
 
     public void setPassword(String password) {

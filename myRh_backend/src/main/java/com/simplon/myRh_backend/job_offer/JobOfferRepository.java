@@ -11,7 +11,7 @@ import java.util.Optional;
 public interface JobOfferRepository extends JpaRepository<JobOffer, Long> {
 
 
-    Optional<JobOffer> findJobOfferByTitleLike(String title);
+    Optional<List<JobOffer>> findJobOfferByTitleLike(String title);
 
     Optional<List<JobOffer>> findJobOffersByCompany(Company company);
 }

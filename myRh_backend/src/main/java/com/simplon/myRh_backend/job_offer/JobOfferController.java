@@ -39,7 +39,7 @@ public class JobOfferController {
     }
 
     @GetMapping("/find/title")
-    public ResponseEntity<JobOffer> findJobOfferByTitle(@RequestParam String title){
+    public ResponseEntity<List<JobOffer>> findJobOfferByTitle(@RequestParam String title){
         return ResponseEntity.ok(jobOfferService.findJobOfferByTitle(title));
     }
 
