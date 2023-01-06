@@ -20,7 +20,7 @@ public class CompanyService {
     }
 
     public Company findByEmail(String email){
-        return companyRepository.findByEmail(email);
+        return companyRepository.findByEmail(email).orElseThrow( () -> new IllegalStateException("Company not found"));
     }
 
     public List<Company> findAll(){

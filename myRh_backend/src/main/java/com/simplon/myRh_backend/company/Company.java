@@ -32,7 +32,30 @@ public class Company implements UserDetails {
     private String logo;
 
     @Enumerated(EnumType.STRING)
-    private Role role;
+    private Role role = Role.COMPANY;
+
+    @Transient
+    private Collection<GrantedAuthority> authorities;
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public List<Recruiter> getRecruiters() {
+        return recruiters;
+    }
+
+    public void setRecruiters(List<Recruiter> recruiters) {
+        this.recruiters = recruiters;
+    }
+
+    public void setAuthorities(String role) {
+        this.authorities = List.of(new SimpleGrantedAuthority(role));
+    }
 
     @OneToMany(mappedBy = "company")
     private List<Recruiter> recruiters;
@@ -71,7 +94,7 @@ public class Company implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(role.name()));
+        return  authorities;
     }
 
     public String getPassword() {
@@ -100,7 +123,7 @@ public class Company implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 
     public void setPassword(String password) {
@@ -136,5 +159,20 @@ public class Company implements UserDetails {
         this.password = password;
         this.phone = phone;
         this.logo = logo;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Company{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", logo='" + logo + '\'' +
+                ", role=" + role +
+                ", recruiters=" + recruiters +
+                '}';
     }
 }
