@@ -1,7 +1,7 @@
 package com.simplon.myRh_backend.Auth;
 
+import com.simplon.myRh_backend.company.Company;
 import lombok.RequiredArgsConstructor;
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,10 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class AuthenticationController {
 
-    @PostMapping("/regiter")
-    public ResponseEntity<AuthenticationResponse> register(@RequestBody RegisterRequest registerRequest){
+    @PostMapping("/register")
+    public ResponseEntity<AuthenticationRequest> register(@RequestBody AuthenticationRequest registerRequest){
         //TODO: register user
-
         return ResponseEntity.ok(new AuthenticationResponse("token"));
     }
 

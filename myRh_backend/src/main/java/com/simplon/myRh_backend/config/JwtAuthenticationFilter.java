@@ -36,8 +36,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         token = header.replace("Bearer ", "");
         // TODO: Extract userEmail from JWT token
         userEmail = jwtService.extractUserName(token);
+        // check if user is authenticated
         if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             UserDetails userDetails =  this.userDetailsService.loadUserByUsername(userEmail);
+            // TODO: Check if token is valid and not expired
             if (jwtService.validateToken(token, userDetails)) {
                 UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
                         userDetails, null, userDetails.getAuthorities()
