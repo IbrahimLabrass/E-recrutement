@@ -7,9 +7,14 @@ module.exports = {
     extend: {
       backgroundColor: {
         "primary": "#7f387a",
+        "secondary": "#e1ddde",
+        "danger": "#e3342f",
+        "success": "#38c172",
       },
       fontFamily: {
-        "sans": [Arial,Helvetica,sans-serif],
+        "sans": ["Arial", "sans-serif"],
+        "serif": ["Arial", "serif"],
+
       }
     },
   },
