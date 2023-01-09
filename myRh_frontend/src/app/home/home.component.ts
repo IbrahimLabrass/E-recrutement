@@ -7,4 +7,14 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
+  username : string = '';
+  usernameStatus : boolean = false;
+
+  onInputText(event: Event){
+    this.username = (<HTMLInputElement>event.target).value
+  }
+
+  resetUserName() {
+    this.username = '';
+  }
 }
