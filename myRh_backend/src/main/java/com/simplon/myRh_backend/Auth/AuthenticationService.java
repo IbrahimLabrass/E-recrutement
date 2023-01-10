@@ -31,6 +31,7 @@ public class AuthenticationService {
         company.setAddress(registerRequest.getAddress());
         company.setPhone(registerRequest.getPhone());
         company.setLogo(registerRequest.getLogo());
+        company.setCity(registerRequest.getCity());
         company.setRole(Role.COMPANY);
         companyService.save(company);
         var token = jwtService.generateToken(company);

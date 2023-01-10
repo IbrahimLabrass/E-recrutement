@@ -14,7 +14,6 @@ module.exports = {
       fontFamily: {
         "sans": ["Arial", "sans-serif"],
         "serif": ["Arial", "serif"],
-
       },
       textColor: {
         "primary": "#7f387a",

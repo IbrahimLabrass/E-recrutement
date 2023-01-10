@@ -31,6 +31,20 @@ public class Company implements UserDetails {
 
     private String logo;
 
+    private String city;
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setAuthorities(Collection<GrantedAuthority> authorities) {
+        this.authorities = authorities;
+    }
+
     @Enumerated(EnumType.STRING)
     private Role role = Role.COMPANY;
 
