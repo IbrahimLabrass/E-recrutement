@@ -11,32 +11,53 @@ import {IndexNavbarComponent} from "./components/navbar/index-navbar/index-navba
 import {MatButtonModule} from "@angular/material/button";
 import {MatCardModule} from "@angular/material/card";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RegisterComponent } from './views/register/register.component';
-import {RegisterFormComponent} from "./components/forms/register-form/register-form.component";
+import { RegisterComponent } from './views/auth/register/register.component';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
+import {FooterSmallComponent} from "./components/footer/footer-small/footer-small.component";
+import {LoginComponent} from "./views/auth/login/login.component";
+import {AuthComponent} from "./layout/auth/auth.component";
+import {MatSelectModule} from "@angular/material/select";
+import {MatRadioModule} from "@angular/material/radio";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
+import {HttpClientModule} from "@angular/common/http";
+import {JobOfferComponent} from "./views/jobOffers/jobOffer.component";
+import {SearchComponent} from "./components/search/search.component";
+import {JobOfferCardComponent} from "./components/card/job-offer-card.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    AuthComponent,
+    FooterSmallComponent,
     WarningAlertComponent,
     SuccessAlertComponent,
     IndexNavbarComponent,
     HighlightDirective,
     RegisterComponent,
-    RegisterFormComponent
+    LoginComponent,
+    JobOfferComponent,
+    SearchComponent,
+    JobOfferCardComponent
+
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    MatButtonModule,
-    MatCardModule,
     BrowserAnimationsModule,
     MatFormFieldModule,
     MatInputModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatCardModule,
+    MatButtonModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [
     FormBuilder

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/job_offers")
+@RequestMapping("/api/job-offers")
 public class JobOfferController {
 
     private final JobOfferService jobOfferService;
@@ -32,6 +32,7 @@ public class JobOfferController {
     public JobOffer findById(@RequestParam Long id){
         return jobOfferService.findById(id);
     }
+
 
     @GetMapping()
     public ResponseEntity<List<JobOffer>> getAllJobOffers(){
