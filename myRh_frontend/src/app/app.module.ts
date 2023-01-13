@@ -25,6 +25,9 @@ import {HttpClientModule} from "@angular/common/http";
 import {JobOfferComponent} from "./views/jobOffers/jobOffer.component";
 import {SearchComponent} from "./components/search/search.component";
 import {JobOfferCardComponent} from "./components/card/job-offer-card.component";
+import {CompanyComponent} from "./layout/Company/company.component";
+import { CompanyDashboardComponent } from './views/company-dashboard-component/company-dashboard.component';
+import {SidebarComponent} from "./components/sidebar/sidebar.component";
 
 @NgModule({
   declarations: [
@@ -40,7 +43,10 @@ import {JobOfferCardComponent} from "./components/card/job-offer-card.component"
     LoginComponent,
     JobOfferComponent,
     SearchComponent,
-    JobOfferCardComponent
+    JobOfferCardComponent,
+    CompanyComponent,
+    SidebarComponent,
+    CompanyDashboardComponent
 
   ],
   imports: [

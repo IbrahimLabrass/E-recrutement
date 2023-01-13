@@ -1,5 +1,6 @@
 package com.simplon.myRh_backend.Auth;
 
+import com.simplon.myRh_backend.company.Company;
 import lombok.*;
 
 @Data
@@ -9,4 +10,5 @@ import lombok.*;
 public class AuthenticationResponse {
 
     private String token;
+    private Company company;
 }

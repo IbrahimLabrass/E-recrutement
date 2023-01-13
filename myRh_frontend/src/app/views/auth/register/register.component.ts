@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {FormBuilder, Validator, Validators} from "@angular/forms";
+import {AuthService} from "../../../services/auth.service";
 
 @Component({
   selector: 'app-register',
@@ -8,7 +9,7 @@ import {FormBuilder, Validator, Validators} from "@angular/forms";
 })
 export class RegisterComponent {
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private _authService : AuthService) { }
 
   registerForm = this.formBuilder.group({
     name: ['', Validators.required],
@@ -20,9 +21,18 @@ export class RegisterComponent {
     logo: ['']
   });
 
+
   register() {
-    console.log("form data is ", this.registerForm.value);
+    this._authService.registerCompany(this.registerForm.value).subscribe( data => {
+      // if success store token in local storage
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('user', JSON.stringify(this.registerForm.value));
+      // redirect to home page
+      window.location.href = '/';
+    } );
   }
+
+
 
   getFilePath(event: any) {
     //set logo value to file name

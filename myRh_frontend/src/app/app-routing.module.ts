@@ -6,6 +6,8 @@ import {AuthComponent} from "./layout/auth/auth.component";
 import {RegisterComponent} from "./views/auth/register/register.component";
 import {LoginComponent} from "./views/auth/login/login.component";
 import {JobOfferComponent} from "./views/jobOffers/jobOffer.component";
+import {CompanyComponent} from "./layout/Company/company.component";
+import {CompanyDashboardComponent} from "./views/company-dashboard-component/company-dashboard.component";
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -14,6 +16,9 @@ const routes: Routes = [
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
   ]},
+  { path: 'company' , component: CompanyComponent, children: [
+      { path: 'dashboard', component: CompanyDashboardComponent },
+    ]},
   { path: 'job-offers',component: JobOfferComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 

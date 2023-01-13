@@ -30,7 +30,7 @@
           <div class="text-blueGray-400 text-center mb-3 font-bold">
             <small>Or sign in with credentials</small>
           </div>
-          <form>
+          <form [formGroup]="loginForm" (ngSubmit)="login()">
             <div class="relative w-full mb-3">
               <label
                 class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
@@ -42,7 +42,7 @@
                 type="email"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Email"
-                required
+                [formControlName]="'email'"
               />
             </div>
 
@@ -55,6 +55,7 @@
               </label>
               <input
                 type="password"
+                [formControlName]="'password'"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Password"
                 min="8"
