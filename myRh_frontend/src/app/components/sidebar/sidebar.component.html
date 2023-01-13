@@ -77,50 +77,29 @@
       <h6
         class="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline"
       >
-        Company Layout Pages
+        Main Menu
       </h6>
       <!-- Navigation -->
 
       <ul class="md:flex-col md:min-w-full flex flex-col list-none">
-        <li class="items-center">
+        <li class="flex items-center gap-3">
+          <svg class="w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 60.7 28.7 32 64 32H448c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96zm64 64V416H224V160H64zm384 0H288V416H448V160z"/></svg>
           <a
-            [routerLink]="['/admin/dashboard']"
+            [routerLink]="['/company/dashboard']"
             class="text-xs uppercase py-3 font-bold block"
-            routerLinkActive="active"
-            #companyDashboard="routerLinkActive"
-            [ngClass]="
-              companyDashboard.isActive
-                ? 'text-red-600 hover:text-red-700'
-                : 'text-blueGray-700 hover:text-blueGray-500'
-            "
           >
             Dashboard
           </a>
         </li>
 
-        <li class="items-center">
+        <li class="flex gap-3 items-center">
+          <svg class="w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M184 48H328c4.4 0 8 3.6 8 8V96H176V56c0-4.4 3.6-8 8-8zm-56 8V96H64C28.7 96 0 124.7 0 160v96H192 320 512V160c0-35.3-28.7-64-64-64H384V56c0-30.9-25.1-56-56-56H184c-30.9 0-56 25.1-56 56zM512 288H320v32c0 17.7-14.3 32-32 32H224c-17.7 0-32-14.3-32-32V288H0V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V288z"/></svg>
           <a
             [routerLink]="['/company/job-offer']"
             class="text-xs uppercase py-3 font-bold block"
-            routerLinkActive="active"
-            #companyDashboard="routerLinkActive"
-            [ngClass]="
-              companyDashboard.isActive
-                ? 'text-red-600 hover:text-red-700'
-                : 'text-blueGray-700 hover:text-blueGray-500'
-            "
           >
             Job Offer
           </a>
-
-        </li>
-
-        <li class="items-center">
-
-        </li>
-
-        <li class="items-center">
-
         </li>
       </ul>
 
@@ -134,29 +113,33 @@
       </h6>
       <!-- Navigation -->
       <ul class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
-        <li class="items-center">
+        <li class="flex items-center gap-3">
+          <svg class="w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M208 256c35.35 0 64-28.65 64-64c0-35.35-28.65-64-64-64s-64 28.65-64 64C144 227.3 172.7 256 208 256zM464 232h-96c-13.25 0-24 10.75-24 24s10.75 24 24 24h96c13.25 0 24-10.75 24-24S477.3 232 464 232zM240 288h-64C131.8 288 96 323.8 96 368C96 376.8 103.2 384 112 384h192c8.836 0 16-7.164 16-16C320 323.8 284.2 288 240 288zM464 152h-96c-13.25 0-24 10.75-24 24s10.75 24 24 24h96c13.25 0 24-10.75 24-24S477.3 152 464 152zM512 32H64C28.65 32 0 60.65 0 96v320c0 35.35 28.65 64 64 64h448c35.35 0 64-28.65 64-64V96C576 60.65 547.3 32 512 32zM528 416c0 8.822-7.178 16-16 16H64c-8.822 0-16-7.178-16-16V96c0-8.822 7.178-16 16-16h448c8.822 0 16 7.178 16 16V416z"/></svg>
+
           <a
             [routerLink]="['/admin/settings']"
             class="text-xs uppercase py-3 font-bold block"
-            routerLinkActive
-            #adminSettings="routerLinkActive"
-            [ngClass]="
-              adminSettings.isActive
-                ? 'text-red-600 hover:text-red-700'
-                : 'text-blueGray-700 hover:text-blueGray-500'
-            "
           >
-            <i
-              class="fas fa-tools mr-2 text-sm"
-              [ngClass]="
-                adminSettings.isActive ? 'opacity-75' : 'text-blueGray-300'
-              "
-            ></i>
             Profile
           </a>
+
         </li>
       </ul>
 
+
+    </div>
+    <div>
+      <!--      add logout link to bottom of side bar -->
+      <ul class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
+        <li class="items-center">
+          <a
+            (click)="logout()"
+            class="text-xs uppercase cursor-pointer py-3 font-bold block"
+          >
+            Logout
+          </a>
+        </li>
+      </ul>
     </div>
   </div>
 </nav>

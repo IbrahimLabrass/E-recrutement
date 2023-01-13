@@ -19,4 +19,10 @@ export class SidebarComponent implements OnInit {
   toggleCollapseShow(classes: string) {
     this.collapseShow = classes;
   }
+
+  logout() {
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
+    window.location.href = '/auth/login';
+  }
 }

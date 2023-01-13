@@ -26,8 +26,10 @@ import {JobOfferComponent} from "./views/jobOffers/jobOffer.component";
 import {SearchComponent} from "./components/search/search.component";
 import {JobOfferCardComponent} from "./components/card/job-offer-card.component";
 import {CompanyComponent} from "./layout/Company/company.component";
-import { CompanyDashboardComponent } from './views/company-dashboard-component/company-dashboard.component';
+import { CompanyDashboardComponent } from './views/company/company-dashboard.component';
 import {SidebarComponent} from "./components/sidebar/sidebar.component";
+import {JobOfferCompanyComponent} from "./views/company/job-offer/job-offer.component";
+import {JobOfferFormComponent} from "./components/forms/job-offer-form.component";
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import {SidebarComponent} from "./components/sidebar/sidebar.component";
     JobOfferCardComponent,
     CompanyComponent,
     SidebarComponent,
-    CompanyDashboardComponent
+    CompanyDashboardComponent,
+    JobOfferCompanyComponent,
+    JobOfferFormComponent
 
   ],
   imports: [

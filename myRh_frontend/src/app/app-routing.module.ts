@@ -7,7 +7,8 @@ import {RegisterComponent} from "./views/auth/register/register.component";
 import {LoginComponent} from "./views/auth/login/login.component";
 import {JobOfferComponent} from "./views/jobOffers/jobOffer.component";
 import {CompanyComponent} from "./layout/Company/company.component";
-import {CompanyDashboardComponent} from "./views/company-dashboard-component/company-dashboard.component";
+import {CompanyDashboardComponent} from "./views/company/company-dashboard.component";
+import {JobOfferCompanyComponent} from "./views/company/job-offer/job-offer.component";
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
   ]},
   { path: 'company' , component: CompanyComponent, children: [
       { path: 'dashboard', component: CompanyDashboardComponent },
+      { path: 'job-offer', component: JobOfferCompanyComponent },
     ]},
   { path: 'job-offers',component: JobOfferComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' },
