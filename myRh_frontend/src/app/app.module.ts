@@ -30,6 +30,10 @@ import { CompanyDashboardComponent } from './views/company/company-dashboard.com
 import {SidebarComponent} from "./components/sidebar/sidebar.component";
 import {JobOfferCompanyComponent} from "./views/company/job-offer/job-offer.component";
 import {JobOfferFormComponent} from "./components/forms/job-offer-form.component";
+import {AdminComponent} from "./layout/admin/admin.component";
+import {AdminSidebarComponent} from "./components/sidebar/admin-sidebar.component";
+import { AdminDashboardComponent } from './views/admin/admin-dashboard/admin-dashboard.component';
+import {AdminLoginComponent} from "./views/auth/login/admin-login.component";
 
 @NgModule({
   declarations: [
@@ -50,7 +54,11 @@ import {JobOfferFormComponent} from "./components/forms/job-offer-form.component
     SidebarComponent,
     CompanyDashboardComponent,
     JobOfferCompanyComponent,
-    JobOfferFormComponent
+    JobOfferFormComponent,
+    AdminComponent,
+    AdminSidebarComponent,
+    AdminDashboardComponent,
+    AdminLoginComponent
 
   ],
   imports: [
@@ -70,7 +78,7 @@ import {JobOfferFormComponent} from "./components/forms/job-offer-form.component
     MatNativeDateModule
   ],
   providers: [
-    FormBuilder
+    FormBuilder,
   ],
   bootstrap: [AppComponent]
 })

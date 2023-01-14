@@ -5,7 +5,6 @@ import com.simplon.myRh_backend.utils.EmailSenderService;
 import com.simplon.myRh_backend.utils.JobOfferNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
@@ -25,7 +24,8 @@ public class JobOfferService {
 
     public JobOffer save(JobOffer jobOffer) {
         // send email to admin when a job offer is created
-        emailSenderService.sendEmail("oussamaelbechari@gmail.com", "New Job Offer", "A new job offer has been created");
+        emailSenderService.sendEmail("oussamaelbechari@gmail.com", "New Job Offer", "A new job offer has been created" +
+                "\n For the position of " + jobOffer.getProfile() +" \n Please Login to this Link to see the details : http://localhost:4200/auth/admin");
         return jobOfferRepository.save(jobOffer);
     }
 

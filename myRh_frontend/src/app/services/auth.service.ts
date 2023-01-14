@@ -31,4 +31,11 @@ export class AuthService {
   }
 
 
+  logout() {
+    // remove user from local storage to log user out
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    // redirect to login page
+    window.location.href = '/auth/login';
+  }
 }

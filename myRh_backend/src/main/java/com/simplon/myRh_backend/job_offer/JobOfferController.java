@@ -21,31 +21,33 @@ public class JobOfferController {
         this.companyService = companyService;
     }
 
-    @PostMapping("/save")
-    public JobOffer save(@RequestBody JobOffer jobOffer,@RequestParam String companyName){
+    @PostMapping("/add")
+    public JobOffer save(@RequestBody JobOffer jobOffer, @RequestParam String companyName) {
+
         Company company = companyService.findByName(companyName);
+        System.out.println("***************\n"+ company.toString());
         jobOffer.setCompany(company);
         return jobOfferService.save(jobOffer);
     }
 
     @GetMapping("/find")
-    public JobOffer findById(@RequestParam Long id){
+    public JobOffer findById(@RequestParam Long id) {
         return jobOfferService.findById(id);
     }
 
 
     @GetMapping()
-    public ResponseEntity<List<JobOffer>> getAllJobOffers(){
+    public ResponseEntity<List<JobOffer>> getAllJobOffers() {
         return ResponseEntity.ok().body(jobOfferService.findAll());
     }
 
     @GetMapping("/find/title")
-    public ResponseEntity<List<JobOffer>> findJobOfferByTitle(@RequestParam String title){
+    public ResponseEntity<List<JobOffer>> findJobOfferByTitle(@RequestParam String title) {
         return ResponseEntity.ok(jobOfferService.findJobOfferByTitle(title));
     }
 
     @GetMapping("/find/company")
-    public ResponseEntity<List<JobOffer>> findJobOfferByCompany(@RequestParam String company){
+    public ResponseEntity<List<JobOffer>> findJobOfferByCompany(@RequestParam String company) {
         Company company1 = companyService.findByName(company);
         return ResponseEntity.ok(jobOfferService.findJobOfferByCompany(company1));
     }

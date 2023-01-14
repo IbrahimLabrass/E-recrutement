@@ -1,5 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {JobOffersService} from "../../services/jobOffers.service";
+import {CompanyInterface} from "../../interfaces/Company.interface";
 
 
 @Component(
@@ -9,8 +11,8 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
   }
 )
 export class JobOfferFormComponent implements OnInit {
-
-  constructor(private formBuilder: FormBuilder) {
+  user = JSON.parse(localStorage.getItem("user") || "{}");
+  constructor(private formBuilder: FormBuilder,private _jobOfferService: JobOffersService ) {
   }
 
   jobOfferForm = this.formBuilder.group({
@@ -18,7 +20,7 @@ export class JobOfferFormComponent implements OnInit {
     description: [ "" ,Validators.required],
     salary: [ "" ,Validators.required],
     location: [ "" ,Validators.required],
-    company: {},
+    // company_id: [ ],
     profile: [ "" ,Validators.required],
     educationLevel: [ "" ,Validators.required],
     experienceLevel: [""],
@@ -27,17 +29,27 @@ export class JobOfferFormComponent implements OnInit {
 
 
   ngOnInit(): void {
-    // set company from local storage user
-    if (localStorage.getItem("user")) {
-      this.jobOfferForm.patchValue({
-        company: JSON.parse(localStorage.getItem("user") || "{}")
-      });
+    // set job offer company to current company logged in
+    // this.jobOfferForm.patchValue({
+    //   company_id: this.user.id
+    // });
+    //
+    // console.log(this.jobOfferForm.value.company_id);
+
+    // check if user is logged in
+    if (localStorage.getItem("token") === null) {
+      window.location.href = "/auth/login";
     }
     }
 
 
 
   addJobOffer() {
-    console.log(this.jobOfferForm.value);
+    this._jobOfferService.addJobOffer(this.jobOfferForm.value).subscribe(data => {
+
+      // if success redirect to home page
+      console.log(data);
+    });
+
   }
 }
