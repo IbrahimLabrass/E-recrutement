@@ -26,9 +26,14 @@ export class AuthService {
     return this.Http.post<any>(this._apiURI+"/register",value, this.options);
   }
 
+  login(value: {}):Observable<any> {
+    return this.Http.post<any>(this._apiURI+"/authenticate",value, this.options);
+  }
   loginCompany(value: {}):Observable<any> {
     return this.Http.post<any>(this._apiURI+"/authenticate",value, this.options);
   }
+
+
 
 
   logout() {

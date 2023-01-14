@@ -1,5 +1,6 @@
 package com.simplon.myRh_backend.company;
 
+import com.simplon.myRh_backend.agent.Agent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,4 +43,6 @@ public class CompanyService {
     public Company findById(Long id) {
         return companyRepository.findById(id).orElseThrow( () -> new IllegalStateException("Company not found"));
     }
+
+
 }

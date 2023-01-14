@@ -22,11 +22,7 @@ public class JobOfferController {
     }
 
     @PostMapping("/add")
-    public JobOffer save(@RequestBody JobOffer jobOffer, @RequestParam String companyName) {
-
-        Company company = companyService.findByName(companyName);
-        System.out.println("***************\n"+ company.toString());
-        jobOffer.setCompany(company);
+    public JobOffer save(@RequestBody JobOffer jobOffer) {
         return jobOfferService.save(jobOffer);
     }
 

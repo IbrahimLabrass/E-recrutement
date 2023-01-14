@@ -20,13 +20,13 @@ export class AdminLoginComponent {
 
 
   login() {
-    // this._authService.loginCompany(this.loginForm.value).subscribe(data => {
-    //   // store token in local storage
-    //   localStorage.setItem('token', data.token);
-    //   localStorage.setItem('user', JSON.stringify(data.company));
-    //
-    //   window.location.href = '/company/dashboard';
-    // });
+    this._authService.login(this.loginForm.value).subscribe(data => {
+      // store token in local storage
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('admin', JSON.stringify(data.agent));
+
+      window.location.href = '/admin/dashboard';
+    });
   }
 
 

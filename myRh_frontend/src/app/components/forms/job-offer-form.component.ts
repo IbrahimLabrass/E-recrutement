@@ -20,21 +20,15 @@ export class JobOfferFormComponent implements OnInit {
     description: [ "" ,Validators.required],
     salary: [ "" ,Validators.required],
     location: [ "" ,Validators.required],
-    // company_id: [ ],
     profile: [ "" ,Validators.required],
     educationLevel: [ "" ,Validators.required],
-    experienceLevel: [""],
+    experienceLevel: ["", Validators.required],
     contractType: ["", Validators.required],
   });
 
 
   ngOnInit(): void {
-    // set job offer company to current company logged in
-    // this.jobOfferForm.patchValue({
-    //   company_id: this.user.id
-    // });
-    //
-    // console.log(this.jobOfferForm.value.company_id);
+
 
     // check if user is logged in
     if (localStorage.getItem("token") === null) {

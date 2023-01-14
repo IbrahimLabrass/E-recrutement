@@ -1,5 +1,6 @@
 package com.simplon.myRh_backend.Auth;
 
+import com.simplon.myRh_backend.agent.Agent;
 import com.simplon.myRh_backend.company.Company;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +21,11 @@ public class AuthenticationController {
         //TODO: register user
         return ResponseEntity.ok(authenticationService.register(registerRequest));
 
+    }
+
+    @PostMapping("/register/agent")
+    public ResponseEntity<AuthenticationResponse> registerAgent(@RequestBody Agent registerRequest){
+        return ResponseEntity.ok(authenticationService.registerAgent(registerRequest));
     }
 
     @PostMapping("/authenticate")

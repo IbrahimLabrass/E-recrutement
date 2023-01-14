@@ -34,7 +34,7 @@ public class WebSecurityConfig  {
                 .csrf().disable()
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests()
-                .requestMatchers("/api/auth/register","/api/auth/authenticate","/api/job-offers")
+                .requestMatchers("/api/auth/register/agent","/api/auth/register","/api/auth/authenticate","/api/job-offers")
                 .permitAll()
                 .anyRequest()
                 .authenticated()

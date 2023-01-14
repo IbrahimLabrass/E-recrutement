@@ -12,4 +12,5 @@ export interface JobOfferInterface {
   educationLevel: string;
   experienceLevel: string;
   contractType: string;
+  status: string;
 }

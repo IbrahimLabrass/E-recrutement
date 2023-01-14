@@ -1,7 +1,8 @@
 import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {JobOfferInterface} from "../interfaces/jobOffer.interface";
 import {Observable} from "rxjs";
+import * as http from "http";
 
 
 @Injectable(
@@ -19,27 +20,19 @@ export class JobOffersService {
       'Accept': 'application/json',
     }
   }
-  private headers = {
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-      'Authorization': 'Bearer ' + this.token
-    }
-
-  }
 
   constructor(private Http: HttpClient) {
   }
 
   getJobOffers(): Observable<JobOfferInterface[]> {
-
     return this.Http.get<JobOfferInterface[]>(this._apiURI, this.options);
   }
 
   addJobOffer(jobOffer: any): Observable<any> {
-    let url = this._apiURI + "/add?companyName=" + this.company.name;
-    console.log(this.company.name);
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.token);
+    console.log(this.token);
+    let url = "http://localhost:8081/api/job-offers/add";
     //send post request to add a new job offer with adding the token in the header
-    return this.Http.post('http://localhost:8081/api/job-offers/add?companyName=Demo', jobOffer, this.headers);
+    return this.Http.post(url, jobOffer, {headers: headers});
   }
 }

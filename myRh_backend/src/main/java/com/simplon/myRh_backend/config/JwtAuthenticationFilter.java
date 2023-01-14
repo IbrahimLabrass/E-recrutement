@@ -34,6 +34,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             return;
         }
         token = header.replace("Bearer ", "");
+        jwtService.setToken(token);
         // TODO: Extract userEmail from JWT token
         userEmail = jwtService.extractUserName(token);
         // check if user is authenticated

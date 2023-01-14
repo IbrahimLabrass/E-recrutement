@@ -10,8 +10,8 @@ import {CompanyComponent} from "./layout/Company/company.component";
 import {CompanyDashboardComponent} from "./views/company/company-dashboard.component";
 import {JobOfferCompanyComponent} from "./views/company/job-offer/job-offer.component";
 import {AdminComponent} from "./layout/admin/admin.component";
-import {AdminDashboardComponent} from "./views/admin/admin-dashboard/admin-dashboard.component";
 import {AdminLoginComponent} from "./views/auth/login/admin-login.component";
+import {AdminDashboardComponent} from "./views/admin/dashboard/dashboard.component";
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
