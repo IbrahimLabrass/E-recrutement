@@ -6,9 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-
+  date = new Date().getFullYear();
   username : string = '';
   usernameStatus : boolean = false;
+
 
   onInputText(event: Event){
     this.username = (<HTMLInputElement>event.target).value

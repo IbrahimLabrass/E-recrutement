@@ -13,12 +13,11 @@ import java.util.List;
 public class JobOfferController {
 
     private final JobOfferService jobOfferService;
-    private final CompanyService companyService;
 
     @Autowired
-    public JobOfferController(JobOfferService jobOfferService, CompanyService companyService) {
+    public JobOfferController(JobOfferService jobOfferService) {
         this.jobOfferService = jobOfferService;
-        this.companyService = companyService;
+
     }
 
     @PostMapping("/add")
@@ -33,8 +32,12 @@ public class JobOfferController {
 
 
     @GetMapping()
-    public ResponseEntity<List<JobOffer>> getAllJobOffers() {
-        return ResponseEntity.ok().body(jobOfferService.findAll());
+    public ResponseEntity<JobOfferPaginationResponse> getAllJobOffers(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "5") int size,
+            @RequestParam(defaultValue = "id") String sortBy,
+            @RequestParam(defaultValue = "ASC") String sortDir) {
+        return ResponseEntity.ok(jobOfferService.getAllJobOffers(page, size, sortBy, sortDir));
     }
 
     @GetMapping("/find/title")

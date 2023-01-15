@@ -45,6 +45,7 @@ export class AdminJobOfferComponent implements OnInit {
 
 
   updateStatus(id: number, status: string) {
+    console.log(status);
     this.jobOfferService.updateJobOfferStatus(id, status).subscribe(data => {
       this.jobOffers = this.jobOffers.filter(jobOffer => jobOffer.id !== id);
       console.log(data);

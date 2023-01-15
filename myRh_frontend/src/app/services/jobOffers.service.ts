@@ -25,8 +25,8 @@ export class JobOffersService {
   constructor(private Http: HttpClient) {
   }
 
-  getJobOffers(): Observable<JobOfferInterface[]> {
-    return this.Http.get<JobOfferInterface[]>(this._apiURI, this.options);
+  getJobOffers(): Observable<PaginationJobOfferInterface> {
+    return this.Http.get<PaginationJobOfferInterface>(this._apiURI, this.options);
   }
 
   getJobOfferByCompany(): Observable<JobOfferInterface[]> {

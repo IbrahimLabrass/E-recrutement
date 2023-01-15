@@ -90,6 +90,18 @@ public class JobOfferService {
         return new JobOfferPaginationResponse(jobOffers, pagedResult.getNumber(), pagedResult.getSize(), pagedResult.getTotalElements(), pagedResult.getTotalPages(), pagedResult.isLast());
     }
 
+    public JobOfferPaginationResponse getAllJobOffers(int pageNo, int pageSize, String sortBy, String sortDir) {
+        Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortBy).ascending()
+                : Sort.by(sortBy).descending();
+
+        // create Pageable instance
+        PageRequest pageable = PageRequest.of(pageNo, pageSize, sort);
+        Page<JobOffer> pagedResult = jobOfferRepository.findAll(pageable);
+
+        List<JobOffer> jobOffers = pagedResult.getContent().stream().filter(jobOffer -> jobOffer.getStatus().equals("valid")).toList();
+
+        return new JobOfferPaginationResponse(jobOffers, pagedResult.getNumber(), pagedResult.getSize(), pagedResult.getTotalElements(), pagedResult.getTotalPages(), pagedResult.isLast());
+    }
 
     public boolean updateJobOfferStatus(long id,String status) {
         JobOffer jobOffer = jobOfferRepository.findById(id).get();

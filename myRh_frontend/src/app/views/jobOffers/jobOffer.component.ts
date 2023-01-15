@@ -15,6 +15,6 @@ export class JobOfferComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._jobOfferService.getJobOffers().subscribe(data => this.jobOffers = data);
+    this._jobOfferService.getJobOffers().subscribe(data => this.jobOffers = data.content);
   }
 }
