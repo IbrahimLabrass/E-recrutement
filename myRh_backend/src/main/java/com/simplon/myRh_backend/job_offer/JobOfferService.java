@@ -6,7 +6,12 @@ import com.simplon.myRh_backend.config.JwtService;
 import com.simplon.myRh_backend.utils.EmailSenderService;
 import com.simplon.myRh_backend.utils.JobOfferNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+
+import java.awt.print.Pageable;
 import java.util.List;
 
 @Service
@@ -20,6 +25,7 @@ public class JobOfferService {
     private final CompanyService companyService;
 
     private final JwtService jwtService;
+
 
 
     @Autowired
@@ -58,8 +64,8 @@ public class JobOfferService {
         return jobOfferRepository.findJobOfferByTitleContains(title).orElseThrow(() -> new JobOfferNotFoundException("Job offer with title " + title + " does not exists"));
     }
 
-    public List<JobOffer> findJobOfferByCompany(Company company) {
-        return jobOfferRepository.findJobOffersByCompany(company).orElseThrow(() -> new JobOfferNotFoundException("Job offer with company " + company.getName() + " does not exists"));
+    public List<JobOffer> findJobOfferByCompany() {
+        return jobOfferRepository.findJobOffersByCompany(getCurrentCompany()).orElseThrow(() -> new JobOfferNotFoundException("Job offer with this company does not exists"));
     }
 
     public JobOffer updateJobOffer(JobOffer jobOffer) {
@@ -70,5 +76,29 @@ public class JobOfferService {
         jobOfferRepository.deleteById(id);
     }
 
+    public JobOfferPaginationResponse getAllJobOffersByStatus(int pageNo, int pageSize, String sortBy, String sortDir) {
+        Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortBy).ascending()
+                : Sort.by(sortBy).descending();
 
+        // create Pageable instance
+        PageRequest pageable = PageRequest.of(pageNo, pageSize, sort);
+        Page<JobOffer> pagedResult = jobOfferRepository.findAll(pageable);
+
+
+        List<JobOffer> jobOffers = pagedResult.getContent().stream().filter(jobOffer -> jobOffer.getStatus().equals("pending")).toList();
+
+        return new JobOfferPaginationResponse(jobOffers, pagedResult.getNumber(), pagedResult.getSize(), pagedResult.getTotalElements(), pagedResult.getTotalPages(), pagedResult.isLast());
+    }
+
+
+    public boolean updateJobOfferStatus(long id,String status) {
+        JobOffer jobOffer = jobOfferRepository.findById(id).get();
+        if (jobOffer.getStatus().equals("pending")) {
+            jobOffer.setStatus(status);
+            jobOfferRepository.save(jobOffer);
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

@@ -12,6 +12,7 @@ import {JobOfferCompanyComponent} from "./views/company/job-offer/job-offer.comp
 import {AdminComponent} from "./layout/admin/admin.component";
 import {AdminLoginComponent} from "./views/auth/login/admin-login.component";
 import {AdminDashboardComponent} from "./views/admin/dashboard/dashboard.component";
+import {AdminJobOfferComponent} from "./views/admin/job-offers/job-offer.component";
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -27,7 +28,7 @@ const routes: Routes = [
     ]},
   { path: 'admin', component: AdminComponent, children: [
       { path: 'dashboard', component: AdminDashboardComponent },
-      { path: 'job-offer', component: JobOfferCompanyComponent }
+      { path: 'job-offer', component: AdminJobOfferComponent }
       ]},
   { path: 'job-offers',component: JobOfferComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' },

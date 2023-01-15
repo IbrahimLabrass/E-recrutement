@@ -1,6 +1,7 @@
 <div class="">
 <form [formGroup]="jobOfferForm" class="flex flex-col bg-inherit p-10 items-center ">
   <mat-card class="flex flex-col w-[80%]">
+
     <mat-card-header>
       <mat-card-title >Add Job Offer </mat-card-title>
       <mat-card-subtitle>Fill up the form to add a job offer request, this job offer will be validated by the admin to post it public</mat-card-subtitle>
@@ -33,11 +34,11 @@
         </mat-form-field>
         <mat-form-field>
           <mat-label>Education Level</mat-label>
-          <input matInput formControlName="educationLevel" placeholder="Bac + X" name="city" required>
+          <input matInput formControlName="educationLevel" placeholder="Bac + X">
         </mat-form-field>
         <mat-form-field>
           <mat-label>Experience Level</mat-label>
-          <input matInput formControlName="experienceLevel" placeholder="Years of Experience" name="city" required>
+          <input matInput formControlName="experienceLevel" placeholder="Years of Experience">
         </mat-form-field>
       </div>
     </mat-card-content>
@@ -46,6 +47,10 @@
       <button mat-raised-button class="w-full mb-4" color="primary" (click)="addJobOffer()">Register</button>
       </div>
     </mat-card-actions>
+    <div class="p-3">
+      <app-success-alert *ngIf="success"></app-success-alert>
+      <app-warning-alert *ngIf="error"></app-warning-alert>
+    </div>
   </mat-card>
 </form>
 </div>

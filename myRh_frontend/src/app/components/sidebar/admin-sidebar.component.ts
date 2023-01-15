@@ -21,8 +21,8 @@ export class AdminSidebarComponent {
   }
 
   logout() {
-  //   localStorage.removeItem('user');
-  //   localStorage.removeItem('token');
-    window.location.href = '/auth/login';
+    localStorage.removeItem('admin');
+    localStorage.removeItem('token');
+    window.location.href = '/auth/admin';
   }
 }

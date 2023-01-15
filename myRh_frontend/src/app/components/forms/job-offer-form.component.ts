@@ -11,6 +11,11 @@ import {CompanyInterface} from "../../interfaces/Company.interface";
   }
 )
 export class JobOfferFormComponent implements OnInit {
+  success: boolean = false;
+  error: boolean = false;
+
+
+
   user = JSON.parse(localStorage.getItem("user") || "{}");
   constructor(private formBuilder: FormBuilder,private _jobOfferService: JobOffersService ) {
   }
@@ -22,7 +27,7 @@ export class JobOfferFormComponent implements OnInit {
     location: [ "" ,Validators.required],
     profile: [ "" ,Validators.required],
     educationLevel: [ "" ,Validators.required],
-    experienceLevel: ["", Validators.required],
+    experienceLevel: [""],
     contractType: ["", Validators.required],
   });
 
@@ -40,10 +45,19 @@ export class JobOfferFormComponent implements OnInit {
 
   addJobOffer() {
     this._jobOfferService.addJobOffer(this.jobOfferForm.value).subscribe(data => {
+      // check if data is not null and throw error if it is
+      if (data.success === false) {
+        this.error = true;
+        return;
+      }else {
+        setTimeout(() => {
+          this.success = true;
+        }, 3000);
 
-      // if success redirect to home page
-      console.log(data);
+      }
+
     });
-
   }
+
+
 }

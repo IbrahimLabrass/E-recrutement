@@ -13,10 +13,9 @@ import {Component} from '@angular/core';
       </svg>
       <span class="sr-only">Info</span>
       <div>
-        <span class="font-medium">Success alert!</span> Change a few things up and try submitting again.
+        <span class="font-medium">Success alert!</span> Job Offer has been created successfully.
       </div>
     </div>`,
-  styleUrls: ['./success-alert.component.css']
 })
 export class SuccessAlertComponent {
 

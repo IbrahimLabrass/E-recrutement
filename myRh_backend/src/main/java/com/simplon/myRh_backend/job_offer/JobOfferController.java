@@ -43,9 +43,23 @@ public class JobOfferController {
     }
 
     @GetMapping("/find/company")
-    public ResponseEntity<List<JobOffer>> findJobOfferByCompany(@RequestParam String company) {
-        Company company1 = companyService.findByName(company);
-        return ResponseEntity.ok(jobOfferService.findJobOfferByCompany(company1));
+    public ResponseEntity<List<JobOffer>> findJobOfferByCompany() {
+        return ResponseEntity.ok(jobOfferService.findJobOfferByCompany());
+    }
+
+    @GetMapping("/find/pending")
+    public ResponseEntity<JobOfferPaginationResponse> findJobOfferByPending(
+            @RequestParam(defaultValue = "0") Integer pageNo,
+            @RequestParam(defaultValue = "10") Integer pageSize,
+            @RequestParam(defaultValue = "id") String sortBy,
+            @RequestParam(defaultValue = "asc") String sortDir)
+    {
+        return ResponseEntity.ok(jobOfferService.getAllJobOffersByStatus( pageNo, pageSize, sortBy, sortDir));
+    }
+
+    @GetMapping("/update")
+    public ResponseEntity<Boolean> updateJobOfferStatus(@RequestParam long id, @RequestParam String status) {
+        return ResponseEntity.ok(jobOfferService.updateJobOfferStatus(id, status));
     }
 
 

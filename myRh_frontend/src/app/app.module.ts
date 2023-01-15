@@ -38,6 +38,7 @@ import {CardSocialTrafficComponent} from "./components/card/card-social-traffic/
 import {CardPageVisitsComponent} from "./components/card/card-page-visits/card-page-visits.component";
 import {CardTableComponent} from "./components/card/card-table/card-table.component";
 import {TableDropdownComponent} from "./components/dropdowns/table-dropdown/table-dropdown.component";
+import {AdminJobOfferComponent} from "./views/admin/job-offers/job-offer.component";
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import {TableDropdownComponent} from "./components/dropdowns/table-dropdown/tabl
     AdminDashboardComponent,
     CardTableComponent,
     TableDropdownComponent,
+    AdminJobOfferComponent,
     CardSocialTrafficComponent,
     CardPageVisitsComponent,
     AuthComponent,
