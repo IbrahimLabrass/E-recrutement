@@ -40,7 +40,7 @@ public class JobOfferService {
         Company company = getCurrentCompany();
         jobOffer.setCompany(company);
         // send email to admin when a job offer is created
-        emailSenderService.sendEmail("oussamaelbechari@gmail.com", "New Job Offer", "A new job offer has been created" +
+        emailSenderService.sendEmail("ibrahimdev455@gmail.com", "New Job Offer", "A new job offer has been created" +
                 "\n For the position of " + jobOffer.getProfile() +" \n Please Login to this Link to see the details : http://localhost:4200/auth/admin");
         return jobOfferRepository.save(jobOffer);
     }
